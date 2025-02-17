@@ -4,12 +4,15 @@ def is_even(n)->bool:
     :param n: integer
     :return: even->return True/odd-> return False
     """
-    if n%2==0:
-        return True
-    return False
+    return not n&1
+    # if n%2==0:
+    #     return True
+    # return False
 
-a=10
-b=11
-print(a&b)
-print(a|b)
-print(a^b)
+# a=10
+# b=11
+# print(a&b)
+# print(a|b)
+# print(a^b)
+n=int(input())
+print(is_even(n))
