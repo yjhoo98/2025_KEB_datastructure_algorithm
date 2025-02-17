@@ -1,43 +1,31 @@
-def print_poly(f_x,t_x) -> str:
-
-    poly_expression = "f(x) = "
-
-    poly_expression=f'{f_x[0]}x^{t_x[0]}'
-    for i in range(1,len(fx)-2):
-        coefficient = f_x[i]
-        term=t_x[i]
-        if coefficient!=0:
-            if coefficient > 0:
-                poly_expression = poly_expression + "+"
-
-            poly_expression = poly_expression + f'{coefficient}x^{term} '
-
-        elif coefficient==0:
-            poly_expression = poly_expression
-    if f_x[len(f_x)-1]==0:
-       return poly_expression
-    elif f_x[len(f_x)-1]>0:
-
-        return poly_expression +"+"+str(f_x[len(f_x)-1])
+memo=dict()
+def fibonacci_memo(n)->int:
+    if n in memo:
+        return memo[n]
+    elif n<=1:
+        return n
     else:
-        return poly_expression + str(f_x[len(f_x) - 1])
-
-def calculation_poly(x_value, f_x,t_x) -> int:
-    return_value = 0
-
-
-    for i in range(len(fx)):
-        coefficient = f_x[i]
-        term = t_x[i]
-        return_value += coefficient * pow(x_value, term)
-
-
-    return return_value
-
-
-fx = [2, 5,-9,11]
-tx=[20,7,2,0]
-if __name__ == "__main__":
-    print(print_poly(fx,tx))
-
-    print(calculation_poly(int(input("x 값 : ")), fx,tx))
+        memo[n]=fibonacci_memo(n-2)+fibonacci_memo(n-1)
+        return memo[n]
+def fibonacci_recursion(n):
+    """
+    fibonacci sequence using recurion
+    :param n:integer
+    :return:fibonacci sequence
+    """
+    if n==0:
+        return 0
+    elif n==1:
+        return 1
+    else:
+        return fibonacci_recursion(n-1)+fibonacci_recursion(n-2)
+def fibonacci_repetition(n)->int:
+    n_list=[0,1]
+    for i in range(n+1):
+        n_list.append(n_list[i]+n_list[i+1])
+    return n_list[n]
+num=int(input("number:"))
+print(fibonacci_repetition(num))
+print(fibonacci_recursion(num))
+n=int(input())
+print(fibonacci_memo(n))
