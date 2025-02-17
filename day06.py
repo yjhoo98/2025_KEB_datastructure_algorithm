@@ -3,24 +3,23 @@ import random
 
 def guess_num(low,high,answer,chance)->int:
     mid=(low+high)//2
-    print(f'guess numberis {mid}')
-    fp.write(f'guess numberis {mid}')
+    print(f'guess number is {mid}')
+    fp.write(f'guess number is {mid}\n')
     while chance != 0:
-
         if mid == answer:
-            # print(f'You win. Answer is {answer}')
-            with open('guess.txt', 'w') as fp:
-                fp.write(f'You win. Answer is {answer}(chance:{chance})')
-            break
+            print(f'You win. Answer is {answer}')
+
+            fp.write(f'You win. Answer is {answer}\n')
+            return
         elif mid > answer:
             chance = chance - 1
             print(f'{mid} is bigger. Chance left : {chance}')
-            fp.write(f'{mid} is bigger. Chance left : {chance}')
+            fp.write(f'{mid} is bigger. Chance left : {chance}\n')
             return guess_num(low,mid-1,answer,chance)
         else:
             chance = chance - 1
             print(f'{mid} is lower. Chance left : {chance}')
-            fp.write(f'{mid} is lower. Chance left : {chance}')
+            fp.write(f'{mid} is lower. Chance left : {chance}\n')
             return guess_num(mid+1,high,answer,chance)
     else:
         print(f'You lost. Answer is {answer}')

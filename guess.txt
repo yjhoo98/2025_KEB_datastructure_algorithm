@@ -1,0 +1,14 @@
+guess number is 50
+50 is lower. Chance left : 6
+guess number is 75
+75 is lower. Chance left : 5
+guess number is 88
+88 is lower. Chance left : 4
+guess number is 94
+94 is bigger. Chance left : 3
+guess number is 91
+91 is lower. Chance left : 2
+guess number is 92
+92 is lower. Chance left : 1
+guess number is 93
+You win. Answer is 93
