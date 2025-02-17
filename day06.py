@@ -30,7 +30,7 @@ def calculation_poly(x_value, f_x,t_x) -> int:
         coefficient = f_x[i]
         term = t_x[i]
         return_value += coefficient * pow(x_value, term)
-        term = term - 1
+        # term = term - 1
 
     return return_value
 
