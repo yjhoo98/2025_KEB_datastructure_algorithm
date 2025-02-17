@@ -14,5 +14,12 @@ def is_even(n)->bool:
 # print(a&b)
 # print(a|b)
 # print(a^b)
+
+def to_oct(n):
+    if n==0:
+        return ""
+    else:
+        return to_oct(n//8)+str(n%8)
+
 n=int(input())
-print(is_even(n))
+print(to_oct(n))
