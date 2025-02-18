@@ -11,7 +11,6 @@ def is_queue_full() :
         front-=1
         rear-=1
         return False
-
 def is_queue_empty() :
     global size, queue, front, rear
     if front == rear:
