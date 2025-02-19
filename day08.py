@@ -45,6 +45,14 @@ node6 = TreeNode()
 node6.data = 'sm'
 node3.left = node6
 
+node7=TreeNode()
+node7.data='dh'
+node4.right=node7
+
+node8=TreeNode()
+node8.data='sn'
+node6.right=node8
+
 post_order(node1)
 print()
 pre_order(node1)
