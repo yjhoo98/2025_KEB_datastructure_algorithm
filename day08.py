@@ -64,7 +64,15 @@ def delete_value(root,value):
                     parent.right = current.right
                 del (current)
             elif current.left is not None and current.right is not None:
-                pass
+                successor=current.left
+                while True:
+                    if successor.right is not None:
+                        successor=successor.right
+                    elif successor.right is None:
+                        temp=current
+                        current=successor
+                        current.left=None
+                        del(temp)
             print(f"{value}이(가) 삭제됨.")
             break
         elif value < current.data:
@@ -81,6 +89,7 @@ def delete_value(root,value):
             current = current.right
 if __name__=="__main__":
     groups=['블랙핑크','레드벨벳','마마무','에이핑크','걸스데이','트와이스']
+    # groups=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
     root=None
     node=TreeNode()
     root=node
@@ -89,3 +98,7 @@ if __name__=="__main__":
     search_value(root,find_group)
     deleteName=input()
     delete_value(root,deleteName)
+    find_group = input()
+    search_value(root, find_group)
+    deleteName = input()
+    delete_value(root, deleteName)
