@@ -45,4 +45,40 @@ if __name__=="__main__":
                 break
             current=current.right
 
-
+    deleteName=input()
+    parent=None
+    parent=root
+    while True:
+        if deleteName==current.data:
+            if current.left is None and current.right is None:
+                if parent.left==current:
+                    parent.left=None
+                else:
+                    parent.right=None
+                del(current)
+            elif current.left is not None and current.right is None:
+                if parent.left==current:
+                    parent.left=current.left
+                else:
+                    parent.right=current.left
+                del(current)
+            elif current.left is None and current.right is not None:
+                if parent.left==current:
+                    parent.left=current.right
+                else:
+                    parent.right=current.left
+                del(current)
+            print(f"{deleteName}이(가) 삭제됨.")
+            break
+        elif deleteName<current.data:
+            if current.left is None:
+                print(f'{deleteName}이(가) 없음')
+                break
+            parent=current
+            current=current.left
+        else:
+            if current.right is None:
+                print(f'{deleteName}이(가) 없음')
+                break
+            parent=current
+            current=current.right
