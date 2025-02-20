@@ -61,12 +61,13 @@ def post_order_bfs(node):
     visited=list()
     queue=deque([node])
     while queue:
-        current=queue.popleft()
-        if current not in visited:
-            visited.append(current)
+        current = queue.popleft()  # 큐에서 노드를 꺼내서 방문
+        print(current.data, end=' ')  # 노드 데이터 출력
 
-        print(f'{node.data}',end=' ')
-    return visited
+        if current.left:  # 왼쪽 자식이 있으면 큐에 추가
+            queue.append(current.left)
+        if current.right:  # 오른쪽 자식이 있으면 큐에 추가
+            queue.append(current.right)
 if __name__ == "__main__":
     numbers = [10, 15, 8, 3, 9]
     root = None
