@@ -41,13 +41,15 @@ def quick_sort(l):
     if n<=1:
         return l
     pivot=l[n//2]
-    left,right=list(),list()
+    left,mid,right=list(),list(),list()
     for i in l:
         if i <pivot:
             left.append(i)
         elif i>pivot:
             right.append(i)
-    return quick_sort(left)+[pivot]+quick_sort(right)
+        else:
+            mid.append(i)
+    return quick_sort(left)+mid+quick_sort(right)
 
 
 lists1 = [random.randint(1, 100000) for _ in range(10000)]
