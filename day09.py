@@ -58,7 +58,8 @@ def post_order(node):
     post_order(node.right)
     print(f'{node.data} ',end='')
 def post_order_bfs(node):
-    visited=list()
+    if node is None:
+        return
     queue=deque([node])
     while queue:
         current = queue.popleft()  # 큐에서 노드를 꺼내서 방문
