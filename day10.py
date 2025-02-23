@@ -1,63 +1,27 @@
-import time
-import random
+import sys
+if __name__=="__main__":
+    list1=[]
+    n,k=map(int,sys.stdin.readline().split())
+    for i in range(1,n+1):
+        list1.append(i)
+    pindex=k-1
+    list2 = list1.copy()
+    result=[]
+    while len(list1)>1:
+        if pindex>len(list2):
+            list2=list2+list1
+        try:
+            result.append(list2[pindex])
+        except IndexError:
+            list2=list2+list1
+            result.append(list2[pindex])
+        list1.remove(list2[pindex])
+        list2.pop(pindex)
 
-def time_decorator(func):
-    def wrapper(*arg):
-        s = time.time()
-        r = func(*arg)
-        e = time.time()
-        print(f'실행시간 : {e - s}초')
-        return r
-    return wrapper
-
-
-@time_decorator
-def insertion_sort(l):
-    for i in range(1, len(l)):
-        value = l[i]
-        while i > 0 and l[i-1] > value:
-            l[i] = l[i-1]
-            i = i - 1
-            #print(i, end=' ')
-        l[i] = value
-    return l
-
-
-@time_decorator
-def bubble_sort(l):
-    for i in range(len(l) - 1):
-        no_swap = True
-        for j in range(len(l) - 1 - i):
-            if l[j] > l[j+1]:
-                l[j], l[j + 1] = l[j+1], l[j]
-                no_swap = False
-                #print(j, end=' ')
-        if no_swap:
-            return l
-    return l
-
-def quick_sort(l):
-    n=len(l)
-    if n<=1:
-        return l
-    pivot=l[n//2]
-    left,mid,right=list(),list(),list()
-    for i in l:
-        if i <pivot:
-            left.append(i)
-        elif i>pivot:
-            right.append(i)
-        else:
-            mid.append(i)
-    return quick_sort(left)+mid+quick_sort(right)
-
-
-lists1 = [random.randint(1, 100000) for _ in range(10000)]
-lists2 = lists1.copy()
-lists3=lists1.copy()
-bubble_sort(lists1)
-insertion_sort(lists2)
-s = time.time()
-quick_sort(lists3)
-e = time.time()
-print(f'실행시간 : {e - s}초')
+        pindex+=(k-1)
+    result=result+list1
+    del list2
+    print(f'<',end='')
+    for i in range(0,len(result)-1):
+        print(f'{result[i]},',end='')
+    print(f'{result[len(result)-1]}>')
