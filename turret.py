@@ -22,4 +22,4 @@ if __name__ == "__main__":
         result.append(str(turret(x1, y1, r1, x2, y2, r2)))
 
     # 한 번에 출력 (출력 초과 방지)
-    sys.stdout.write("\n".join(result) + "\n"
+    sys.stdout.write("\n".join(result) + "\n")
